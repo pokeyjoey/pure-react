@@ -1,0 +1,32 @@
+import React from 'react';
+import ReactDOM from 'react-dom';
+
+function Book() {
+  return (
+    <div className='book'>
+      <Title/>
+      <Author/>
+    </div>
+  );
+}
+
+function Title() {
+  return (
+    <div className='title'>
+      The Title
+    </div>
+  );
+}
+
+function Author() {
+  return (
+    <div className='author'>
+      The Author
+    </div>
+  );
+}
+
+ReactDOM.render(
+  <Book/>,
+  document.getElementById('root')
+);
