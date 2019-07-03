@@ -1,0 +1,125 @@
+import React from 'react';
+import ReactDOM from 'react-dom';
+import PropTypes from 'prop-types';
+import './index.css';
+
+function Envelope( { recipient, sender } ) {
+  return (
+    <div className="envelope" >
+      <tbody>
+        <table>
+          <tr>
+            <td><AddressLabel address={recipient}/></td>
+            <td></td>
+            <td>STAMP</td>
+          </tr>
+          <tr>
+            <td></td>
+            <td><AddressLabel address={sender}/></td>
+            <td></td>
+          </tr>
+        </table>
+      </tbody>
+    </div>
+  );
+};
+     
+Envelope.propTypes = {
+  recipient: PropTypes.shape({
+    firstName: PropTypes.string.isRequired,
+    lastName: PropTypes.string.isRequired,
+    address: PropTypes.string.isRequired,
+    city: PropTypes.string.isRequired,
+    state: PropTypes.string.isRequired,
+    zip: PropTypes.string.isRequired
+  }).isRequired,
+  sender: PropTypes.shape({
+    firstName: PropTypes.string.isRequired,
+    lastName: PropTypes.string.isRequired,
+    address: PropTypes.string.isRequired,
+    city: PropTypes.string.isRequired,
+    state: PropTypes.string.isRequired,
+    zip: PropTypes.string.isRequired
+  }).isRequired
+};
+
+function AddressLabel( { address } ) {
+  return (
+    <div>
+      <div>{address.firstName} {address.lastName}</div>
+      <div>{address.address}</div>
+      <div>{address.city}, {address.state} {address.zip}</div>
+    </div>
+  );
+}
+
+AddressLabel.propTypes = {
+  address: PropTypes.shape({
+    firstName: PropTypes.string.isRequired,
+    lastName: PropTypes.string.isRequired,
+    address: PropTypes.string.isRequired,
+    city: PropTypes.string.isRequired,
+    state: PropTypes.string.isRequired,
+    zip: PropTypes.string.isRequired
+  }).isRequired
+};
+
+var toAddress = {
+  firstName: 'Sarah',
+  lastName: 'Roche',
+  address: '3050 Tamaya Boulevard #1031',
+  city: 'Jacksonville',
+  state: 'FL',
+  zip: '32246'
+};
+
+var fromAddress = {
+  firstName: 'Kathy',
+  lastName: 'Roche',
+  address: '24781 West Northwood',
+  city: 'Olmsted Falls',
+  state: 'OH',
+  zip: '44138'
+};
+
+function CreditCard({ card }) {
+  var {bankName, creditCardNumber, expirationDate, name} = card;
+  return (
+    <div>
+      <div>
+        <span>{bankName}</span>
+      </div>
+      <div>
+        <span>{creditCardNumber}</span>
+      </div>
+      <div>
+        <span>valid thru {expirationDate}</span>
+      </div>
+      <div>
+        <span>{name}</span>
+      <div>
+    </div>
+  );
+};
+
+//CreditCard.propTypes = {
+//  card: PropTypes.shape({
+//    bankName: PropTypes.string.isRequired,
+//    creditCardNumber: PropTypes.string.isRequired,
+//    expirationDate: PropTypes.string.isRequired,
+//    name: PropTypes.string.isRequired
+//  }).isRequired
+//};
+
+var cardInfo = {
+  bankName: 'Big Bank, Inc.',
+  creditCardNumber: '1234 5678 8765 4321',
+  expirationDate: '08/19',
+  name: 'Cardholder Name'
+};
+
+ReactDOM.render(
+  <CreditCard card={cardInfo}/>,
+  //<Envelope recipient={toAddress} sender={fromAddress}/>,
+  document.getElementById('root')
+);

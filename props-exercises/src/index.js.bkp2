@@ -1,0 +1,46 @@
+import React from 'react';
+import ReactDOM from 'react-dom';
+import PropTypes from 'prop-types';
+import './index.css';
+
+
+function CreditCard({ card }) {
+  var {bankName, creditCardNumber, expirationDate, name} = card;
+  return (
+    <div>
+      <div>
+        <span>{bankName}</span>
+      </div>
+      <div>
+        <span>{creditCardNumber}</span>
+      </div>
+      <div>
+        <span>valid thru {expirationDate}</span>
+      </div>
+      <div>
+        <span>{name}</span>
+      <div>
+    </div>
+  );
+}
+
+CreditCard.propTypes = {
+  card: PropTypes.shape({
+    bankName: PropTypes.string.isRequired,
+    creditCardNumber: PropTypes.string.isRequired,
+    expirationDate: PropTypes.string.isRequired,
+    name: PropTypes.string.isRequired
+  }).isRequired
+};
+
+var cardInfo = {
+  bankName: "Big Bank, Inc.",
+  creditCardNumber: "1234 5678 8765 4321",
+  expirationDate: "08/19",
+  name: "Cardholder Name"
+};
+
+ReactDOM.render(
+  <CreditCard card={cardInfo}/>,
+  document.getElementById('root')
+);
