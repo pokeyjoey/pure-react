@@ -1,42 +1,33 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 
-function Book() {
-  return (
+const Book = () => (
     <div className='book'>
       <Title/>
       <Author/>
       <Stats/>
     </div>
-  );
-}
+);
 
-function Title() {
-  return (
+const Title = () => (
     <div className='title'>
       The Title
     </div>
-  );
-}
+);
 
-function Author() {
-  return (
+const Author = () => (
     <div className='author'>
       The Author
     </div>
-  );
-}
+);
 
-function Stats() {
-  return (
+const Stats = () => (
     <ul className='stats'>
       <StatsListItems/>
     </ul>
-  );
-}
+);
 
-function StatsListItems() {
-  return (
+const StatsListItems = () => (
     <>
       <li className='stats'>
         5 stars
@@ -45,20 +36,17 @@ function StatsListItems() {
         12-345678-910
       </li>
     </>
-  );
-}
+);
 
-function NewLineTest() {
-  return (
+const NewLineTest = () => (
     <div>
       Newline
       {' '}
       Test
     </div>
-  );
-}
+);
 
-function Greeting() {
+const Greeting = () => {
   // Try all of these variations
   let username = "root";
   // let username = undefined;
@@ -106,12 +94,30 @@ function Data() {
   );
 }
 
+function UnorderedList() {
+  return (
+    <ul>
+      <li>Kirk</li>
+      <li>Spock</li>
+      <li>McCoy</li>
+    </ul>
+  )
+}
+
+const ArrowUnorderedList = () => (
+  <ul>
+    <li>John Carter</li>
+    <li>Dejah Thoris</li>
+    <li>Tars Tarkas</li>
+  </ul>
+);
 
 ReactDOM.render(
   //<Book/>,
   //<NewLineTest/>,
-  //<Greeting/>,
+  <Greeting/>,
   //<ReturnMultipleElements/>,
-  <Table/>,
+  //<Table/>,
+  //<UnorderedList/>,
   document.getElementById('root')
 );
